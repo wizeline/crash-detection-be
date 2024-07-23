@@ -34,7 +34,7 @@ Download a YouTube video to a directory named `videos`:
 python download_youtube_video.py ./videos "https://www.youtube.com/watch?v=abcdefghijk"
 ```
 
-### Extra ffmpeg samplese
+### Extra ffmpeg samples
 
 #### Splitting a Video at Regular Time Intervals
 
