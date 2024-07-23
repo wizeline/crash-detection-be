@@ -38,6 +38,12 @@ To specify a custom output filename:
 ```sh
 ./runner.sh -r /path/to/requirements.txt -o custom_layer_name
 ```
+Sample for this project:
+
+```sh
+./runner.sh -r requirements_pillow.txt -o ../../layers/pillow
+```
+
 
 This command will create a file named custom_layer_name.zip in the layers folder.
 

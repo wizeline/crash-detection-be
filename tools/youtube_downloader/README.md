@@ -33,3 +33,11 @@ Download a YouTube video to a directory named `videos`:
 ```bash
 python download_youtube_video.py ./videos "https://www.youtube.com/watch?v=abcdefghijk"
 ```
+
+### Extra ffmpeg samplese
+
+#### Splitting a Video at Regular Time Intervals
+
+```bash
+ffmpeg -i /path/to/your/video.mp4 -acodec copy -f segment -segment_time 20 -vcodec copy -reset_timestamps 1 -map 0 output_time_%d.mp4
+```
