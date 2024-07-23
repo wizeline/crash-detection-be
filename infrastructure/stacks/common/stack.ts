@@ -13,9 +13,9 @@ dotenv.config({
   // debug: true
 });
 
-const AIAgentsEnginePrefx = 'ProezaAIAgentsEngine';
-const secretsName = `${AIAgentsEnginePrefx}Secrets`;
-const eventBusName = `${AIAgentsEnginePrefx}EventBus`;
+const CDCommonStackPrefix = 'CDCommonStack';
+const secretsName = `${CDCommonStackPrefix}Secrets`;
+// const eventBusName = `${CDCommonStackPrefix}EventBus`;
 
 const openAiKey = process.env.OPEN_AI_KEY || '';
 const llamaCloudApiKey = process.env.LLAMA_CLOUD_API_KEY || '';
@@ -34,7 +34,7 @@ export class CommonStack extends cdk.Stack {
     super(scope, id, props);
 
     // Create an API Gateway REST API
-    const api = new apigateway.RestApi(this, `${AIAgentsEnginePrefx}Api`, {
+    const api = new apigateway.RestApi(this, `${CDCommonStackPrefix}Api`, {
       defaultCorsPreflightOptions: {
         allowOrigins: apigateway.Cors.ALL_ORIGINS,
         allowMethods: apigateway.Cors.ALL_METHODS,
@@ -81,61 +81,48 @@ export class CommonStack extends cdk.Stack {
 
 
     // Create the custom Event Bus
-    const eventBus = new events.EventBus(this, eventBusName, {
-      eventBusName: eventBusName,
-    });
+    // const eventBus = new events.EventBus(this, eventBusName, {
+    //   eventBusName: eventBusName,
+    // });
     
-    // Export the Event Bus name and ARN
-    this.eventBusName = eventBus.eventBusName;
-    this.eventBusArn = eventBus.eventBusArn;
-    new cdk.CfnOutput(this, 'EventBusNameOutput', {
-      value: this.eventBusName,
-      exportName: 'CommonEventBusName',
-    });
+    // // Export the Event Bus name and ARN
+    // this.eventBusName = eventBus.eventBusName;
+    // this.eventBusArn = eventBus.eventBusArn;
+    // new cdk.CfnOutput(this, 'EventBusNameOutput', {
+    //   value: this.eventBusName,
+    //   exportName: 'CommonEventBusName',
+    // });
 
-    new cdk.CfnOutput(this, 'EventBusArnOutput', {
-      value: this.eventBusArn,
-      exportName: 'CommonEventBusArn',
-    });
+    // new cdk.CfnOutput(this, 'EventBusArnOutput', {
+    //   value: this.eventBusArn,
+    //   exportName: 'CommonEventBusArn',
+    // });
 
 
-    // Define the S3 bucket for raw documents
-    const rawDocumentsBucket = new s3.Bucket(this, 'RawDocuments', {
+    // Define the S3 bucket for raw videos
+    const rawVideosBucket = new s3.Bucket(this, 'RawVideos', {
       removalPolicy: cdk.RemovalPolicy.DESTROY, // Only for development purposes
       autoDeleteObjects: true, // Only for development purposes
     });
 
     // Export the bucket name
-    new cdk.CfnOutput(this, 'BucketRawDocuments', {
-      value: rawDocumentsBucket.bucketName,
-      exportName: 'RawDocumentsBucketName',
+    new cdk.CfnOutput(this, 'CommonRawVideosBucket', {
+      value: rawVideosBucket.bucketName,
+      exportName: 'CommonRawVideosBucketName',
     });
 
-    // Define the S3 bucket for raw documents
-    const parsedDocumentsBucket = new s3.Bucket(this, 'ParsedDocuments', {
+    // Define the S3 bucket for video chunks
+    const VideoChunksBucket = new s3.Bucket(this, 'CommonBucketVideoChunks', {
       removalPolicy: cdk.RemovalPolicy.DESTROY, // Only for development purposes
       autoDeleteObjects: true, // Only for development purposes
     });
 
     // Export the bucket name
-    new cdk.CfnOutput(this, 'BucketParsedDocuments', {
-      value: parsedDocumentsBucket.bucketName,
-      exportName: 'ParsedDocumentsBucketName',
+    new cdk.CfnOutput(this, 'CommonVideoChunksBucket', {
+      value: VideoChunksBucket.bucketName,
+      exportName: 'ParsedVideoChunksBucketName',
     });
 
-    // Pipedrive API callback endpoint
-    // Function
-    const pipedriveCallbackFunc = new lambda.Function(this, 'PipedriveCallback', {
-      functionName: 'PipedriveCallback',
-      runtime: lambda.Runtime.PYTHON_3_12,
-      handler: 'init.lambda_handler',
-      code: lambda.Code.fromAsset('../source/common/pipedrive_callback'),
-      architecture: lambda.Architecture.ARM_64,
-      timeout: cdk.Duration.seconds(12),
-      environment: {}
-    });
-    const pipedriveCallbackRes = api.root.addResource('pipedrive-callback');
-    // Create a POST method on the pipedrive-callback resource
-    pipedriveCallbackRes.addMethod('POST', new apigateway.LambdaIntegration(pipedriveCallbackFunc));
+    
   }
 }

@@ -2,7 +2,7 @@ import av
 import av.datasets
 
 # Replace "/path/to/your/video.mp4" with the path to your video file
-# It requred two layers, pillow and av libraries to work with this script in a AWS lambda function
+# It requres pillow and pyAV layers to work with this script in a AWS lambda function
 
 content = av.datasets.curated("/path/to/your/video.mp4")
 with av.open(content) as container:

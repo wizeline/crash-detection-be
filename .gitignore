@@ -1,4 +1,6 @@
 .DS_Store
+.env
+
 /tools/youtube_downloader/videos/*
 !/tools/youtube_downloader/videos/
 /samples/get_key_frames/frames/*
