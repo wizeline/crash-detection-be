@@ -2,7 +2,7 @@ import av
 import av.datasets
 
 
-content = av.datasets.curated("/Users/cesar.reyes/Code/Wizeline/AI/crash-detection-be/tools/youtube_downloader/videos/MNDOT_time_0.mp4")
+content = av.datasets.curated("/path/to/your/video.mp4")
 with av.open(content) as container:
     # Signal that we only want to look at keyframes.
     stream = container.streams.video[0]
