@@ -100,7 +100,7 @@ export class CommonStack extends cdk.Stack {
 
 
     // Define the S3 bucket for raw videos
-    const rawVideosBucket = new s3.Bucket(this, 'RawVideos', {
+    const rawVideosBucket = new s3.Bucket(this, `${CDCommonStackPrefix}RawVideos`, {
       removalPolicy: cdk.RemovalPolicy.DESTROY, // Only for development purposes
       autoDeleteObjects: true, // Only for development purposes
     });
@@ -112,7 +112,7 @@ export class CommonStack extends cdk.Stack {
     });
 
     // Define the S3 bucket for video chunks
-    const VideoChunksBucket = new s3.Bucket(this, 'CommonBucketVideoChunks', {
+    const VideoChunksBucket = new s3.Bucket(this, `${CDCommonStackPrefix}CommonBucketVideoChunks`, {
       removalPolicy: cdk.RemovalPolicy.DESTROY, // Only for development purposes
       autoDeleteObjects: true, // Only for development purposes
     });
