@@ -55,7 +55,7 @@ def chunk_video(video_file, logger, s3, bucket_name, bucket_key):
     # Ensure output directory exists
     chunks_path = "/tmp/chunks/"
     os.makedirs(chunks_path, exist_ok=True)
-    chunk_seconds_duration = 3
+    chunk_seconds_duration = 10
     current_chunk = 1
     
     vc = cv2.VideoCapture()
