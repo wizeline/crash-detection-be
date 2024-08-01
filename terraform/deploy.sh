@@ -7,7 +7,7 @@ PACKAGE_DIR=$TARGET_DIR/pkg
 
 rm -rf $TARGET_DIR
 mkdir -p $PACKAGE_DIR
-pip install -r src/requirements.txt -t $PACKAGE_DIR
+pip install -r $SRC_DIR/requirements.txt -t $PACKAGE_DIR
 cp $SRC_DIR/* $PACKAGE_DIR
 cd $SCRIPT_DIR
 terraform init
