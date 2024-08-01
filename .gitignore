@@ -1,6 +1,8 @@
 .DS_Store
 .env
 .terraform
+.venv
+target
 
 /tools/youtube_downloader/videos/*
 !/tools/youtube_downloader/videos/
