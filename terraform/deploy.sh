@@ -12,7 +12,6 @@ cp $SRC_DIR/* $PACKAGE_DIR
 cd $SCRIPT_DIR
 terraform init
 terraform apply
-rm -rf $PACKAGE_DIR
 
 
 
