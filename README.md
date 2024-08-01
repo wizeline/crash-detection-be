@@ -2,6 +2,8 @@
 Ferrovial Crash Detection PoC
 
 ## Run locally
+In VSCode, navigate to RUN AND DEBUG and execute `Debug chunk_videos_lambda_function.py`
+
 
 ### Configure Python Virtual Environment
 ```
