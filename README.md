@@ -25,15 +25,9 @@ $ brew tap hashicorp/tap
 $ brew install hashicorp/tap/terraform
 ```
 
-### Initialize Terraform (only once)
-```
-$ cd terraform
-$ terraform init
-```
-
 ## Deploy
 ```
-$ ./deploy.sh
+$ terraform/deploy.sh
 ```
 
 
