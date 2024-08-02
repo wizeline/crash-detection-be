@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Debug chunk_videos_lambda_function.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/chunk_videos_lambda_function.py",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "args": "${workspaceFolder}/test/events/put-bucket-wizeline-cdf-video-raw.json"
+        },
+
+        {
+            "name": "Debug detect_collision_lambda_function.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/detect_collision_lambda_function.py",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env",
+            "args": "${workspaceFolder}/test/events/put-bucket-wizeline-cdf-video-chunks.json"
+        }
+    ]
+}
