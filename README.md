@@ -25,9 +25,14 @@ $ brew tap hashicorp/tap
 $ brew install hashicorp/tap/terraform
 ```
 
-## Deploy
+## Deploy to AWS
 ```
 $ terraform/deploy.sh
 ```
 
+## Destroy AWS infrastructure
+```
+$ terraform/destroy.sh
+
+```
 
