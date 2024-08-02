@@ -2,8 +2,6 @@
 Ferrovial Crash Detection PoC
 
 ## Run locally
-In VSCode, navigate to RUN AND DEBUG and execute `Debug chunk_videos_lambda_function.py`
-
 
 ### Configure Python Virtual Environment
 ```
@@ -15,6 +13,7 @@ $ pip install -r requirements.txt
 
 ### Run lambda in VSCode
 
+In Visual Studio Code, navigate to `RUN AND DEBUG` and execute either `Debug chunk_videos_lambda_function.py` or `Debug detect_collision_lambda_function.py`
 
 ## Configure Terraform
 

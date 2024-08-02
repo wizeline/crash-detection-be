@@ -35,9 +35,6 @@ resource "aws_s3_bucket_notification" "chunked_videos_bucket_notification" {
   depends_on = [aws_lambda_permission.allow_s3_to_call_detect_collision_lambda]
 }
 
-
-
-
 # Output the S3 bucket names
 output "raw_bucket_name" {
   value = aws_s3_bucket.raw_videos_bucket.id
