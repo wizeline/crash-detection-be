@@ -1,9 +1,6 @@
-
-
 # Create an IAM role for the Lambda function
 resource "aws_iam_role" "lambda_role" {
-  name = "lambda_function_role"
-
+  name = "${var.prefix}${var.lambda_function_role}"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
@@ -24,7 +21,7 @@ resource "aws_iam_role_policy_attachment" "lambda_basic_policy" {
 
 # Create a policy for S3 read and write access to both buckets
 resource "aws_iam_policy" "lambda_s3_policy" {
-  name        = "lambda_s3_policy"
+  name        = "${var.prefix}${var.lambda_s3_policy}"
   path        = "/"
   description = "IAM policy for Lambda S3 access to raw and chunks buckets"
 

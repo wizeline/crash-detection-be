@@ -2,7 +2,7 @@ terraform {
  required_providers {
    aws = {
      source  = "hashicorp/aws"
-     version = "~> 2.70"
+      version = "~> 4.0"
    }
  }
 }
@@ -10,9 +10,10 @@ terraform {
 # Configure AWS account settings
 provider "aws" {
  profile = "default"
- region  = var.region
+ region  = var.aws_region
 }
 
+# Local execution
 provider "null" {
-  # Configuration options
+ 
 }

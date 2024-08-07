@@ -17,6 +17,8 @@ In Visual Studio Code, navigate to `RUN AND DEBUG` and execute either `Debug chu
 
 ## Configure Terraform
 
+(!) Note: All the resources are prefixed with the value of the variable "prefix" defined in  [terraform.tfvars](terraform.tfvars)
+
 ### Install Terraform (only once)
 
 ```
